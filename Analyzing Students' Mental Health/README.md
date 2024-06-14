@@ -40,19 +40,19 @@ Beynəlxalq tələbələr üçün oxşar nəticə çıxara biləcəyinizi və qa
 
 Let us examine and analyse the data of the international students participating in the study to see how their length of stay affects their average mental health diagnosis score.
 
-##### The average columns should contain the average of the todep (PHQ-9 test), tosc (SCS test), and toas (ASISS test) columns for each length of stay, rounded to two decimal places.
-##### Column count_int is the number of international students for each period of stay
+#### The average columns should contain the average of the todep (PHQ-9 test), tosc (SCS test), and toas (ASISS test) columns for each length of stay, rounded to two decimal places.
+#### Column count_int is the number of international students for each period of stay
 
 ``` sql  
 SELECT stay, COUNT(inter_dom) AS count_int, ROUND(AVG(todep), 2) AS average_phq, ROUND(AVG(tosc), 2) AS average_scs, ROUND(AVG(toas), 2) AS average_as
 
 FROM students
 ```
-##### Since we are analysing international students, it is necessary to give the condition to bring the rows with "Inter" and not to bring the empty ones.
+#### Since we are analysing international students, it is necessary to give the condition to bring the rows with "Inter" and not to bring the empty ones.
 ``` sql  
 WHERE stay IS NOT NULL AND inter_dom = 'Inter'
 ```
-##### Then we group these selected rows according to the length of stay and sort them from most to least.
+#### Then we group these selected rows according to the length of stay and sort them from most to least.
 ``` sql  
 GROUP BY stay
 ORDER BY stay DESC;
